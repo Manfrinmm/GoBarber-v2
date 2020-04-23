@@ -1,5 +1,16 @@
 import React from "react";
 
-const App: React.FC = () => <div className="App">aopa</div>;
+import AppProvider from "./hooks";
+import SignIn from "./pages/SignIn";
+import GlobalStyle from "./styles/global";
+
+const App: React.FC = () => (
+  <>
+    <GlobalStyle />
+    <AppProvider>
+      <SignIn />
+    </AppProvider>
+  </>
+);
 
 export default App;
