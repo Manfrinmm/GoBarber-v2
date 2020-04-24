@@ -1,6 +1,6 @@
 import React, { useCallback, useRef } from "react";
 import { FiArrowLeft, FiUser, FiMail, FiLock } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import { FormHandles } from "@unform/core";
 import { Form } from "@unform/web";
@@ -17,6 +17,7 @@ import { Container, Content, Background } from "./styles";
 const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const { addToast } = useToast();
+  const history = useHistory();
 
   const handleSubmit = useCallback(
     async (data: object) => {
@@ -41,10 +42,11 @@ const SignUp: React.FC = () => {
         addToast({
           title: "Cadastro realizado",
           type: "success",
-          description: `Seu cadastro foi feito, agora vai lá e faça o login.
+          description: `Seu cadastro foi feito, você já pode fazer o login.
            Curta o momento (～￣▽￣)～`,
           autoClose: 7000,
         });
+        history.push("/");
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErros(err);
@@ -67,7 +69,7 @@ const SignUp: React.FC = () => {
         });
       }
     },
-    [addToast],
+    [addToast, history],
   );
 
   return (
