@@ -1,7 +1,7 @@
 import { shade } from "polished";
 import styled, { keyframes } from "styled-components";
 
-import signInBackground from "../../assets/sign-in-background.png";
+import signUpBackground from "../../assets/sign-up-background.png";
 
 export const Container = styled.div`
   height: 100vh;
@@ -10,15 +10,15 @@ export const Container = styled.div`
   align-items: stretch;
 `;
 
-const appearFromLeft = keyframes`
+const appearFromRight = keyframes`
   from {
     opacity: 0;
-    transform: translateX(-50px);
+    transform: translate(50px);
   }
 
-  to{
+  to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translate(0);
   }
 `;
 
@@ -28,6 +28,7 @@ export const Content = styled.div`
   align-items: center;
 
   place-content: center;
+  overflow-x: hidden;
 
   width: 100%;
   max-width: 700px;
@@ -35,7 +36,7 @@ export const Content = styled.div`
 
   padding: 24px;
 
-  animation: ${appearFromLeft} 1s;
+  animation: ${appearFromRight} 1s;
 
   form {
     display: flex;
@@ -45,9 +46,6 @@ export const Content = styled.div`
     margin: 8rem 0;
     width: 100%;
     max-width: 340px;
-    /* min-width: 300px; */
-
-    /* padding: 24px; */
 
     h1 {
       margin-bottom: 24px;
@@ -74,15 +72,14 @@ export const Content = styled.div`
   > a {
     display: flex;
     align-items: center;
-
     text-decoration: none;
 
-    color: #ff9000;
+    color: #f4ede8;
 
     transition: color 0.2s;
 
     &:hover {
-      color: ${shade(0.2, "#ff9000")};
+      color: ${shade(0.2, "#f4ede8")};
     }
 
     svg {
@@ -93,6 +90,6 @@ export const Content = styled.div`
 
 export const Background = styled.div`
   flex: 1;
-  background: url(${signInBackground}) no-repeat center;
+  background: url(${signUpBackground}) no-repeat center;
   background-size: cover;
 `;
